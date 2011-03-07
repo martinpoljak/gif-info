@@ -24,14 +24,13 @@ module GifInfo
         @header
         
         ##
-        # Constructor.
-        # @param [IO] io IO object
-        # 
+        # Holds header struct.
+        #
+        # In case, data are loaded, @header and @struct links to the 
+        # same objects.
+        #
         
-        def initialize(io)
-            super(io)
-            self.header.data
-        end
+        @struct
         
         ##
         # Returns header struct.
@@ -40,11 +39,19 @@ module GifInfo
         
         def header
             if @header.nil?
-                @header = StructFx::new(&self.class::STRUCTURE)
-                @header << io.read(@header.bytesize)
+                @header = __struct
+                @header << @io.read(@header.bytesize)
             end
             
-            return @header
+            @header
+        end
+        
+        ##
+        # Skips block in stream.
+        #
+        
+        def skip
+            @io.seek(__struct.bytesize, IO::SEEK_CUR)
         end
         
         ##
@@ -54,6 +61,21 @@ module GifInfo
         
         def bytesize
             self.header.bytesize
+        end
+        
+        
+        private
+        
+        ##
+        # Returns header struct.
+        #
+        
+        def __struct
+            if @struct.nil?
+                @struct = StructFx::new(&self.class::STRUCTURE)
+            end
+            
+            @struct
         end
     end
 end

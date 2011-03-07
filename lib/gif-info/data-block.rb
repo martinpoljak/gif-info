@@ -24,16 +24,6 @@ module GifInfo
         @body
         
         ##
-        # Constructor.
-        # @param [IO] io IO object
-        #
-        
-        def initialize(io)
-            super(io)
-            self.body
-        end
-        
-        ##
         # Returns data body.
         # @return [Body] data body
         #
@@ -44,6 +34,14 @@ module GifInfo
             end
             
             return @body
+        end
+        
+        ##
+        # Skips block in stream.
+        #
+        
+        def skip
+            self.body.skip
         end
         
         ##

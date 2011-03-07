@@ -41,7 +41,6 @@ module GifInfo
         def initialize(io, size)
             @size = size
             super(io)
-            self.body
         end
         
         ##
@@ -55,6 +54,14 @@ module GifInfo
             end
             
             return @body
+        end
+
+        ##
+        # Skips block in stream.
+        #
+        
+        def skip
+            @io.seek(@size, IO::SEEK_CUR)
         end
         
         ##

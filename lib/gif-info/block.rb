@@ -21,6 +21,12 @@ module GifInfo
         #
         
         @io
+        
+        ##
+        # Holds block position in stream.
+        #
+        
+        @position
     
         ##
         # Returns header.
@@ -45,6 +51,17 @@ module GifInfo
         
         def initialize(io)
             @io = io
+            @position = io.pos
+            self.skip
+        end
+        
+        ##
+        # Skips block in stream.
+        # @abstract
+        #
+        
+        def skip
+            not_implemented
         end
         
         ##

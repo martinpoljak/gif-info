@@ -20,6 +20,12 @@ module GifInfo
         @io
         
         ##
+        # Position in stream.
+        #
+        
+        @position
+        
+        ##
         # Data contained in the data body.
         #
         
@@ -32,6 +38,7 @@ module GifInfo
         
         def initialize(io)
             @io = io
+            @position = io.pos
         end
         
         ##
@@ -47,6 +54,8 @@ module GifInfo
                 return @data
             end
             
+            @io.seek(@position)     # seeks to block position
+            
             if not block.nil?
                 loop do
                     size = @io.getbyte
@@ -61,6 +70,18 @@ module GifInfo
                 @data = data
                 
                 return @data
+            end
+        end
+        
+        ##
+        # Skips the body content in stream.
+        #
+        
+        def skip
+            loop do
+                size = @io.getbyte
+                break if size <= 0
+                @io.seek(size, IO::SEEK_CUR)
             end
         end
         

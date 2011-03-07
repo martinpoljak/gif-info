@@ -73,7 +73,13 @@ module GifInfo
         loop do
             reader << (io.read(length) << "\0")     # adds zero character for cases, trailer is last byte of the file
             header = self::BLOCK_HEAD.data
-            io.seek(-length, IO::SEEK_CUR)
+
+            # seeks back, but without seeking for streaming support
+            length.times do |i|
+                b = self::BLOCK_HEAD.raw.getbyte(i)
+                io.seek(-length, IO::SEEK_CUR)
+                #io.ungetbyte(b)
+            end
 
             case header.block_introducer
                 when 0x21   # extension

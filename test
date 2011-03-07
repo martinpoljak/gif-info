@@ -5,12 +5,14 @@
 $:.push("./lib")
 require "gif-info"
 
+100.times do
 File.open("../ajax-loader.gif", "rb") do |io|
     GifInfo.parse(io) do |block|
-        p block.class
+        #p block.class
         
         #if block.kind_of? GifInfo::LogicalScreenDescriptor
         #    p block.header.data.packed.data
         #end
     end
+end
 end

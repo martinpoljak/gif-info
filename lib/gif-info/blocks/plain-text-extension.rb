@@ -33,8 +33,43 @@ module GifInfo
                 uint8 :block_size
             end
             
+            ##
+            # Returns data body.
+            #
+            # @param [Integer] skip number of bytes to skip before data
+            # @return [Body] data body
+            #
+
             def body
-                super(self.header.data.block_size)
+                super(__additional)
+            end
+            
+            ##
+            # Skips block in stream.
+            #
+     
+            def skip
+                super(__additional)
+            end
+ 
+            ##
+            # Returns block size.
+            # @return [Integer] block size in bytes
+            #
+           
+            def bytesize
+                super + __additional
+            end
+
+            
+            private
+            
+            ##
+            # Returns additional length.
+            #
+            
+            def __additional
+                self.header.data.block_size
             end
         end
     end

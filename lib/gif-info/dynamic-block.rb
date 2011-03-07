@@ -25,22 +25,6 @@ module GifInfo
         @body
         
         ##
-        # Constructor.
-        #
-        # @param [IO] io IO object
-        # @param [Proc] block block for run before loading the data 
-        #   (necessary for eventuall skipping content between header and them)
-        #
-        
-        def initialize(io, &block)
-            super(io)
-            if not block.nil?
-                block.call()
-            end
-            self.body.data
-        end
-        
-        ##
         # Returns data body.
         #
         # @param [Integer] skip number of bytes to skip before data
@@ -58,6 +42,18 @@ module GifInfo
             @body
         end
         
+        ##
+        # Skips block in stream.
+        #
+        
+        def skip(additional = nil)
+            super
+            if not additional.nil?
+                @io.seek(additional, IO::SEEK_CUR) 
+            end
+            self.body.skip
+        end
+                
         ##
         # Returns block size.
         # @return [Integer] block size in bytes
