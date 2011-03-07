@@ -20,6 +20,13 @@ module GifInfo
         #
         
         class Trailer < Block
+            ##
+            # Skips block in stream.
+            #
+     
+            def skip
+                @io.seek(1, IO::SEEK_CUR)
+            end
         end
     end
 end

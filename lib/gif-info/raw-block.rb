@@ -50,6 +50,7 @@ module GifInfo
         
         def body
             if @body.nil?
+                self.prepare!
                 @body = @io.read(@size)
             end
             

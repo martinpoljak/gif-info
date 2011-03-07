@@ -39,6 +39,7 @@ module GifInfo
         
         def header
             if @header.nil?
+                self.prepare!
                 @header = __struct
                 @header << @io.read(@header.bytesize)
             end

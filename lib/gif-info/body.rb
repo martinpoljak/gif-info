@@ -54,7 +54,7 @@ module GifInfo
                 return @data
             end
             
-            @io.seek(@position)     # seeks to block position
+            self.prepare!     # seeks to block position
             
             if not block.nil?
                 loop do
@@ -83,6 +83,14 @@ module GifInfo
                 break if size <= 0
                 @io.seek(size, IO::SEEK_CUR)
             end
+        end
+        
+        ##
+        # Prepares for reading.
+        #
+        
+        def prepare!
+            @io.seek(@position)
         end
         
         ##

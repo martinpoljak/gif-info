@@ -47,7 +47,7 @@ module GifInfo
         #
         
         def skip(additional = nil)
-            super
+            super()
             if not additional.nil?
                 @io.seek(additional, IO::SEEK_CUR) 
             end

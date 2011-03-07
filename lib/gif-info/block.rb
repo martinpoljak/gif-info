@@ -65,6 +65,14 @@ module GifInfo
         end
         
         ##
+        # Prepares to reading position.
+        #
+        
+        def prepare!
+            @io.seek(@position)
+        end
+        
+        ##
         # Returns size of block in bytes.
         # @abstract
         #
