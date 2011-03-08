@@ -8,7 +8,7 @@ require "struct-fx"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # General blocks module.

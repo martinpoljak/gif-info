@@ -5,7 +5,7 @@
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
     
     ##
     # Decoder and holder of block-encoded GIF data.

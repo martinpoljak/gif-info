@@ -7,7 +7,7 @@ require "abstract"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # General block.

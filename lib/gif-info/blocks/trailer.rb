@@ -7,7 +7,7 @@ require "gif-info/block"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # General blocks module.

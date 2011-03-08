@@ -8,7 +8,7 @@ require "gif-info/body"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # Abstract block which contains data in {Body} form only.

@@ -7,7 +7,7 @@ require "gif-info/fixed-block"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # Abstract block which contains both header and data with dynamic 

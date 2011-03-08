@@ -7,7 +7,7 @@ require "gif-info/raw-block"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # General color table block.

@@ -8,7 +8,7 @@ require "gif-info/block"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # Abstract fixed-size block which contains header only. 

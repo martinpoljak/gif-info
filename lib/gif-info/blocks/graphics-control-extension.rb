@@ -8,7 +8,7 @@ require "frozen-objects"
 # Primary GifInfo module.
 #
     
-module GifInfo
+class GifInfo
 
     ##
     # General blocks module.

@@ -7,7 +7,7 @@ require "gif-info/block"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # Abstract block which contains only datas in non-formatted form,

@@ -20,7 +20,7 @@ require "gif-info/blocks/trailer"
 # Primary GifInfo module.
 #
 
-module GifInfo
+class GifInfo
 
     ##
     # Defines structure of the block head.
