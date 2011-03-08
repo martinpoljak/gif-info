@@ -52,7 +52,7 @@ module GifInfo
         def initialize(io)
             @io = io
             @position = io.pos
-            self.skip
+            self.skip!
         end
         
         ##
@@ -60,7 +60,7 @@ module GifInfo
         # @abstract
         #
         
-        def skip
+        def skip!
             not_implemented
         end
         

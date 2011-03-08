@@ -61,7 +61,7 @@ module GifInfo
         # Skips block in stream.
         #
         
-        def skip
+        def skip!
             @io.seek(@size, IO::SEEK_CUR)
         end
         

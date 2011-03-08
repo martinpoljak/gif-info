@@ -48,7 +48,7 @@ module GifInfo
             # Skips block in stream.
             #
      
-            def skip
+            def skip!
                 super(__additional)
             end
  

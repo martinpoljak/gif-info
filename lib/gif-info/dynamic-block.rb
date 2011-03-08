@@ -46,12 +46,12 @@ module GifInfo
         # Skips block in stream.
         #
         
-        def skip(additional = nil)
+        def skip!(additional = nil)
             super()
             if not additional.nil?
                 @io.seek(additional, IO::SEEK_CUR) 
             end
-            self.body.skip
+            self.body.skip!
         end
                 
         ##

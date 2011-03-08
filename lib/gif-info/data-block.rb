@@ -40,8 +40,8 @@ module GifInfo
         # Skips block in stream.
         #
         
-        def skip
-            self.body.skip
+        def skip!
+            self.body.skip!
         end
         
         ##

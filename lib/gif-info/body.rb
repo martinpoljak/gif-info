@@ -77,7 +77,7 @@ module GifInfo
         # Skips the body content in stream.
         #
         
-        def skip
+        def skip!
             loop do
                 size = @io.getbyte
                 break if size <= 0
