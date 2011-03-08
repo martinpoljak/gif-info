@@ -5,6 +5,9 @@
 $:.push("./lib")
 require "gif-info"
 
+f = GifInfo::analyze_file("./ajax-loader.gif")
+p f
+=begin
 #100.times do
 File.open("./ajax-loader.gif", "rb") do |io|
     GifInfo.parse(io) do |block|
@@ -16,3 +19,4 @@ File.open("./ajax-loader.gif", "rb") do |io|
     end
 end
 #end
+=end
