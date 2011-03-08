@@ -6,7 +6,7 @@ $:.push("./lib")
 require "gif-info"
 
 #100.times do
-File.open("../ajax-loader.gif", "rb") do |io|
+File.open("./ajax-loader.gif", "rb") do |io|
     GifInfo.parse(io) do |block|
         p block.class
         
