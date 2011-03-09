@@ -7,7 +7,7 @@ require "gif-info"
 require "riot"
 require "digest/md5"
 
-context "GifInfo (base informations)" do
+context "GifInfo (animated, base informations)" do
     setup do 
         GifInfo::analyze_file("./ajax-loader.gif")
     end
@@ -18,7 +18,7 @@ context "GifInfo (base informations)" do
         result &= (topic.version == :"89a")
         result &= (topic.width == 32)
         result &= (topic.height == 32)
-        result &= (topic.color_resolution == 256)
+        result &= (topic.color_resolution == 64)
         result &= (topic.pixel_aspect_ratio.nil?)
         result &= (topic.images_count == 12)
         result &= (topic.cyclic?)
@@ -28,7 +28,7 @@ context "GifInfo (base informations)" do
     end
 end
 
-context "GifInfo (global structure)" do
+context "GifInfo (animated, global structure)" do
     setup do
         data = Struct::new(:count, :color_tables_data, :images_data)::new(0, "", "")
         File::open("./ajax-loader.gif", "rb") do |io|
@@ -56,5 +56,57 @@ context "GifInfo (global structure)" do
     
     asserts("images data") do
         Digest::MD5.hexdigest(topic.images_data) == "a660b40aa42d09e3f79107edfdd4b042"
+    end
+end
+
+context "GifInfo (unanimated, base informations)" do
+    setup do 
+        GifInfo::analyze_file("./ajax-loader-0.gif")
+    end
+    
+    asserts("base informations accessor") do
+        result = true
+        result &= (topic.type == :GIF)
+        result &= (topic.version == :"89a")
+        result &= (topic.width == 32)
+        result &= (topic.height == 32)
+        result &= (topic.color_resolution == 256)
+        result &= (topic.pixel_aspect_ratio.nil?)
+        result &= (topic.images_count == 1)
+        result &= (not topic.cyclic?)
+        result &= (not topic.animated?)
+        result &= (not topic.interlaced?)
+        result &= (not topic.transparent?)
+    end
+end
+
+context "GifInfo (unanimated, global structure)" do
+    setup do
+        data = Struct::new(:count, :color_tables_data, :images_data)::new(0, "", "")
+        File::open("./ajax-loader-0.gif", "rb") do |io|
+            GifInfo::parse(io) do |block|
+                data.count += 1
+                
+                if [GifInfo::Blocks::GlobalColorTable, GifInfo::Blocks::LocalColorTable].include? block.class
+                    data.color_tables_data << block.body
+                elsif block.kind_of? GifInfo::Blocks::ImageData
+                    data.images_data << block.body.data
+                end
+            end
+        end
+        
+        data
+    end
+    
+    asserts("blocks count") do
+        topic.count == 8
+    end
+    
+    asserts("color tables content") do
+        Digest::MD5.hexdigest(topic.color_tables_data) == "fc55558e8169339f09831300b068fd41"
+    end
+    
+    asserts("images data") do
+        Digest::MD5.hexdigest(topic.images_data) == "e26142b66066aaa01316f14982e45dea"
     end
 end

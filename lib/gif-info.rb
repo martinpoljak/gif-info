@@ -323,7 +323,7 @@ class GifInfo
                 @pixel_aspect_ratio = value             #
                 
                 if packed.global_color_table            # color resolution
-                    @color_resolution = 2 ** (packed.global_color_table_resolution + 1)
+                    @color_resolution = 2 ** (packed.global_color_table_size + 1)
                 end
                 
             # Comments
