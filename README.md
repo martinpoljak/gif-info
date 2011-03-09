@@ -9,12 +9,12 @@ file informations. Works above all seekable IO streams, so allows
 processing of the big files too. Doesn't perform [LZW][2] decompressing, 
 returns raw data for both color tables and images.
 
-Two different approaches are available: **streaming** and **static**. First 
-one yields "stream" of objects which are equivalent to functional blocks
-in the GIF file and which contain low-level GIF data. It's equivalent
-of for example [SAX][3] parser although, of sure, less complex. The 
-other one provides classical single object-like access to interpreted 
-file informations. Principially it's similar to [DOM][4].
+Two different approaches are available: **sequential** and **static**. 
+First one yields "stream" of objects which are equivalent to functional 
+blocks in the GIF file and which contain low-level GIF data. It's 
+equivalent of for example [SAX][3] parser although, of sure, less 
+complex. The other one provides classical single object-like access to 
+interpreted file informations. 
 
 Examples of both are available in the `bin` directory. `git-info` 
 command writes out content of the static information object, `git-dump`
@@ -43,10 +43,10 @@ Copyright
 Copyright &copy; 2011 [Martin Kozák][7]. See `LICENSE.txt` for
 further details.
 
-[1]: http://github.com/martinkozak/bit-packer
-[2]: http://rubydoc.info/gems/bit-packer/0.1.0/frames
-[3]: http://github.com/martinkozak/bit-packer
-[4]: http://github.com/martinkozak/bit-packer
-[5]: http://github.com/martinkozak/bit-packer
-[6]: http://github.com/martinkozak/git-info/issues
+[1]: http://www.matthewflickinger.com/lab/whatsinagif/
+[2]: http://en.wikipedia.org/wiki/LZW
+[3]: http://en.wikipedia.org/wiki/Simple_API_for_XML
+[4]: http://en.wikipedia.org/wiki/Document_Object_Model
+[5]: https://github.com/martinkozak/struct-fx
+[6]: http://github.com/martinkozak/gif-info/issues
 [7]: http://www.martinkozak.net/
