@@ -2,6 +2,7 @@
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
 
 require "gif-info/dynamic-block"
+require "frozen-objects"
 
 ##
 # Primary GifInfo module.

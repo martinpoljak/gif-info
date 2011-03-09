@@ -2,7 +2,6 @@
 # encoding: utf-8
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)f
 
-$:.push("../lib")
 if ARGV[0].nil? or (ARGV[0] == "--help")
     puts "Usage: gif-dump [--help|--version|FILE]"
     puts "\t--help     display this help and exit"

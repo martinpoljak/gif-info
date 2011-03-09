@@ -3,6 +3,7 @@
 
 require "gif-info/dynamic-block"
 require "gif-info/body"
+require "frozen-objects"
 
 ##
 # Primary GifInfo module.
