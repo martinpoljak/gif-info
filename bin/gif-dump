@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+# (c) 2011 Martin Kozák (martinkozak@martinkozak.net)f
+
+$:.push("../lib")
+if ARGV[0].nil? or (ARGV[0] == "--help")
+    puts "Usage: gif-dump [--help|--version|FILE]"
+    puts "\t--help     display this help and exit"
+    puts "\t--version  output version information and exit"
+
+    exit
+elsif ARGV[0] == "--version"
+    puts "gif-info 0.1.0"
+    puts "Copyright (C) 2011 Martin Kozák (martinkozak@martinkozak.net)"
+    puts "Dumps all structure informations from given GIF file."
+    exit
+end
+
+###
+
+require "gif-info"
+
+def __render(struct, level)
+    struct.members.each do |item|
+        if item == :packed
+            puts (" " * level) << "packed"
+            __render(struct[item].data, level + 1)
+        else
+            puts (" " * level) << item.to_s << " " << struct[item].to_s
+        end
+    end
+end
+
+# Analyzes
+File::open(ARGV[0], "rb") do |io|
+    GifInfo::parse(io) do |block|
+        if block.kind_of? GifInfo::FixedBlock
+            puts "\n" << block.class.name
+            __render(block.header.data, 1)
+        end
+    end
+end

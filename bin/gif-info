@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+# (c) 2011 Martin Kozák (martinkozak@martinkozak.net)f
+
+$:.push("../lib")
+if ARGV[0].nil? or (ARGV[0] == "--help")
+    puts "Usage: gif-info [--help|--version|FILE]"
+    puts "\t--help     display this help and exit"
+    puts "\t--version  output version information and exit"
+
+    exit
+elsif ARGV[0] == "--version"
+    puts "gif-info 0.1.0"
+    puts "Copyright (C) 2011 Martin Kozák (martinkozak@martinkozak.net)"
+    puts "Writes out informations about given GIF file."
+    exit
+end
+
+###
+
+require "gif-info"
+
+# Analyzes
+f = GifInfo::analyze_file(ARGV[0])
+
+# Writes out
+puts "type " << f.type.to_s
+puts "version " << f.version.to_s
+puts "images_count " << f.images_count.to_s
+puts "width " << f.width.to_s
+puts "height " << f.height.to_s
+puts "color_resolution " << f.color_resolution.to_s
+
+if not f.pixel_aspect_ratio.nil?
+    puts "pixel_aspect_ratio " << f.pixel_aspect_ratio.to_s
+end
+
+puts "transparent " << f.transparent?.to_s
+puts "interlaced " << f.interlaced?.to_s
+puts "animated " << f.animated?.to_s
+puts "cyclic " << f.cyclic?.to_s
+
+if f.comments.length > 0
+    puts "comment " << f.comments.first
+end
