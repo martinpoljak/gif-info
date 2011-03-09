@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Martin Kozák"]
-  s.date = %q{2011-03-09}
+  s.date = %q{2011-03-10}
   s.email = %q{martinkozak@martinkozak.net}
   s.executables = ["gif-dump", "gif-info"]
   s.extra_rdoc_files = [
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "ajax-loader.gif",
     "bin/gif-dump",
     "bin/gif-info",
+    "gif-info.gemspec",
     "lib/gif-info.rb",
     "lib/gif-info/block.rb",
     "lib/gif-info/blocks/application-extension.rb",
@@ -52,8 +53,8 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/martinkozak/gif-info}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.1}
-  s.summary = %q{Analyzer of the GIF image format. Performs complete analysis of internal GIF block structure and streams it as an objects stream with metainformations of each block. Also can interpret internal structure by providing the simple object-like interface to base image file informations. Works above seekable IO streams, so allows processing of the big files too. Doesn't perform LZW decompressing, returns raw data for both color tables and images.}
+  s.rubygems_version = %q{1.6.2}
+  s.summary = %q{Pure Ruby analyzer of the GIF image format. Performs complete analysis of internal GIF block structure and streams it as an objects stream with metainformations of each block. Also can interpret internal structure by providing the simple object-like interface to base image file informations. Works above seekable IO streams, so allows processing of the big files too. Doesn't perform LZW decompressing, returns raw data for both color tables and images.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
