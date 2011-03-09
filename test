@@ -4,19 +4,57 @@
 
 $:.push("./lib")
 require "gif-info"
+require "riot"
+require "digest/md5"
 
-f = GifInfo::analyze_file("./ajax-loader.gif")
-p f
-=begin
-#100.times do
-File.open("./ajax-loader.gif", "rb") do |io|
-    GifInfo.parse(io) do |block|
-        p block.class
-        
-        #if block.kind_of? GifInfo::LogicalScreenDescriptor
-        #    p block.header.data.packed.data
-        #end
+context "GifInfo (base informations)" do
+    setup do 
+        GifInfo::analyze_file("./ajax-loader.gif")
+    end
+    
+    asserts("base informations accessor") do
+        result = true
+        result &= (topic.type == :GIF)
+        result &= (topic.version == :"89a")
+        result &= (topic.width == 32)
+        result &= (topic.height == 32)
+        result &= (topic.color_resolution == 256)
+        result &= (topic.pixel_aspect_ratio.nil?)
+        result &= (topic.images_count == 12)
+        result &= (topic.cyclic?)
+        result &= (topic.animated?)
+        result &= (not topic.interlaced?)
+        result &= (not topic.transparent?)
     end
 end
-#end
-=end
+
+context "GifInfo (global structure)" do
+    setup do
+        data = Struct::new(:count, :color_tables_data, :images_data)::new(0, "", "")
+        File::open("./ajax-loader.gif", "rb") do |io|
+            GifInfo::parse(io) do |block|
+                data.count += 1
+                
+                if [GifInfo::Blocks::GlobalColorTable, GifInfo::Blocks::LocalColorTable].include? block.class
+                    data.color_tables_data << block.body
+                elsif block.kind_of? GifInfo::Blocks::ImageData
+                    data.images_data << block.body.data
+                end
+            end
+        end
+        
+        data
+    end
+    
+    asserts("blocks count") do
+        topic.count == 42
+    end
+    
+    asserts("color tables content") do
+        Digest::MD5.hexdigest(topic.color_tables_data) == "48b630060f3cc156c8b35ba58eaade5c"
+    end
+    
+    asserts("images data") do
+        Digest::MD5.hexdigest(topic.images_data) == "a660b40aa42d09e3f79107edfdd4b042"
+    end
+end
