@@ -18,7 +18,7 @@ interpreted file informations.
 
 Examples of both are available in the `bin` directory. `git-info` 
 command writes out content of the static information object, `git-dump`
-dumps content of stream of low level blocks.
+dumps content of low level blocks stream.
 
 Modifiing the file and writing changes back is possible (see [StructFx][5]
 library documentation). It isn't implemented directly by this library,
