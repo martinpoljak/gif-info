@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "gif-info"
   gem.homepage = "http://github.com/martinkozak/gif-info"
   gem.license = "MIT"
-  gem.summary = 'Analyzer of the GIF image format. Performs complete analysis of internal GIF block structure and streams it as an objects stream with metainformations of each block. Also can interpret internal structure by providing the simple object-like interface to base image file informations. Works above seekable IO streams, so allows processing of the big files too. Doesn't perform LZW decompressing, returns raw data for both color tables and images.'
+  gem.summary = 'Analyzer of the GIF image format. Performs complete analysis of internal GIF block structure and streams it as an objects stream with metainformations of each block. Also can interpret internal structure by providing the simple object-like interface to base image file informations. Works above seekable IO streams, so allows processing of the big files too. Doesn\'t perform LZW decompressing, returns raw data for both color tables and images.'
   gem.email = "martinkozak@martinkozak.net"
   gem.authors = ["Martin Kozák"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
