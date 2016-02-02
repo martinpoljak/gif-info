@@ -110,3 +110,16 @@ context "GifInfo (unanimated, global structure)" do
         Digest::MD5.hexdigest(topic.images_data) == "e26142b66066aaa01316f14982e45dea"
     end
 end
+
+context "GifInfo (animated, trigger local color table bug)" do
+    setup do 
+        GifInfo::analyze_file("./local-color-table.gif")
+    end
+    
+    asserts("base informations accessor") do
+        result = true
+        result &= (topic.type == :GIF)
+        result &= (topic.version == :"89a")
+        result &= (topic.animated?)
+    end
+end
