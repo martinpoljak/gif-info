@@ -126,7 +126,7 @@ class GifInfo
                     
                     # Local Color Table
                     if desc.header.data.packed.data.local_color_table
-                        size = lsd.header.data.packed.data.local_color_table_size
+                        size = desc.header.data.packed.data.local_color_table_size
                         yield Blocks::LocalColorTable::new(io, size)
                     end
                     
