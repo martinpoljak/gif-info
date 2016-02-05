@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<struct-fx>, [">= 0.1.1"])
   s.add_runtime_dependency(%q<abstract>, [">= 1.0.0"])
   s.add_runtime_dependency(%q<frozen-objects>, [">= 0.2.0"])
-  s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
+  s.add_development_dependency(%q<bundler>, [">= 1.0.0"])
   s.add_development_dependency(%q<riot>, [">= 0.12.1"])
 
 end
