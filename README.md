@@ -30,7 +30,7 @@ by the library contains binary serialization routines implicitly.
 Copyright
 ---------
 
-Copyright &copy; 2011 - 2016 [Martin Poljak][7]. See `LICENSE.txt` for
+Copyright &copy; 2011 &ndash; 2016 [Martin Poljak][7]. See `LICENSE.txt` for
 further details.
 
 [1]: http://www.matthewflickinger.com/lab/whatsinagif/
