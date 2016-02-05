@@ -28,8 +28,7 @@ Gem::Specification.new do |s|
     "bin/*",
     "LICENSE.txt",
     "README.md",
-    "CHANGES.txt",
-    "test"
+    "CHANGES.txt"
   ]
  
   # dependencies
