@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   # author
   s.author = "Martin Poljak"
   s.email = 'martin@poljak.cz'
-  s.homepage = "http://github.com/martinkozak/gif-info"
+  s.homepage = "https://github.com/martinkozak/gif-info"
   
   # files & paths
   s.bindir = 'bin'
@@ -20,13 +20,15 @@ Gem::Specification.new do |s|
   s.executables = ["gif-dump", "gif-info"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.md"
+    "README.md",
+    "CHANGES.txt"
   ]
   s.files = Dir[
     "lib/**/*",
     "bin/*",
     "LICENSE.txt",
     "README.md",
+    "CHANGES.txt",
     "test"
   ]
  
