@@ -2,7 +2,8 @@
 0.1.1 (2016-02-05)
 * added duration calcultaion for animated GIFs [Oded Arbel]
 * added duration support to 'gif-info' command [Martin Poljak]
-* jeweler deprecated, gem signed
+* bug in local color table extraction fixed [Oded Arbel]
+* jeweler deprecated, gem signed [Martin Poljak]
 
 0.1.0 (2011-03-10)
 * initial version [Martin Poljak]
