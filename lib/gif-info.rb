@@ -125,8 +125,8 @@ class GifInfo
                     yield desc = Blocks::ImageDescriptor::new(io)
                     
                     # Local Color Table
-                    if desc.header.data.packed.data.local_color_table
-                        size = desc.header.data.packed.data.local_color_table_size
+                    if (d = desc.header.data.packed.data).local_color_table
+                        size = d.local_color_table_size
                         yield Blocks::LocalColorTable::new(io, size)
                     end
                     
