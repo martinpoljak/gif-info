@@ -27,26 +27,16 @@ of data blocks as comments or image data -- it's necessary split them
 to blocks manually in your writing routine. Other structures provided
 by the library contains binary serialization routines implicitly.
 
-Contributing
-------------
-
-1. Fork it.
-2. Create a branch (`git checkout -b 20101220-my-change`).
-3. Commit your changes (`git commit -am "Added something"`).
-4. Push to the branch (`git push origin 20101220-my-change`).
-5. Create an [Issue][6] with a link to your branch.
-6. Enjoy a refreshing Diet Coke and wait.
-
 Copyright
 ---------
 
-Copyright &copy; 2011 [Martin Kozák][7]. See `LICENSE.txt` for
+Copyright &copy; 2011 - 2016 [Martin Poljak][7]. See `LICENSE.txt` for
 further details.
 
 [1]: http://www.matthewflickinger.com/lab/whatsinagif/
-[2]: http://en.wikipedia.org/wiki/LZW
-[3]: http://en.wikipedia.org/wiki/Simple_API_for_XML
-[4]: http://en.wikipedia.org/wiki/Document_Object_Model
+[2]: https://en.wikipedia.org/wiki/LZW
+[3]: https://en.wikipedia.org/wiki/Simple_API_for_XML
+[4]: https://en.wikipedia.org/wiki/Document_Object_Model
 [5]: https://github.com/martinkozak/struct-fx
-[6]: http://github.com/martinkozak/gif-info/issues
-[7]: http://www.martinkozak.net/
+[6]: https://github.com/martinkozak/gif-info/issues
+[7]: https://www.martinpoljak.net/
