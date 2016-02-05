@@ -257,6 +257,18 @@ class GifInfo
     @images_count
     
     ##
+    # Contains the GIF duration, for multiple image files. In animaged GIF
+    # files, frames specify a delay from one another, and the duration of
+    # animation is the total of all the frame delays. A nonanimaged GIF
+    # hence has a duration of 0.
+    #
+    # @return [Float] duration in seconds
+    #
+    
+    attr_reader :duration
+    @duration
+    
+    ##
     # Indicates animation is cyclic.
     #
     
@@ -292,6 +304,7 @@ class GifInfo
         @animated = false
         @transparent = false
         @interlaced = false
+        @duration = 0
         
         self.consider! io
     end
@@ -353,6 +366,7 @@ class GifInfo
             elsif block.kind_of? GifInfo::Blocks::GraphicsControlExtension
                 packed = block.header.data.packed.data
                 @transparent |= packed.transparent_color            # transparent
+                @duration += block.header.data.delay_time.to_f / 100 # delay time is in hundredths of a second
                 
             end
             
