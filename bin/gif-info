@@ -29,6 +29,8 @@ puts "images_count " << f.images_count.to_s
 puts "width " << f.width.to_s
 puts "height " << f.height.to_s
 puts "color_resolution " << f.color_resolution.to_s
+puts "duration " << f.duration.to_s
+
 
 if not f.pixel_aspect_ratio.nil?
     puts "pixel_aspect_ratio " << f.pixel_aspect_ratio.to_s
